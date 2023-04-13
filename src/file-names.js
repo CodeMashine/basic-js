@@ -16,7 +16,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function renameFiles(names ) {
-
+let result = [names[0]] ;
+for(let i = 1 ; i < names.length ; i++){
+  // let pointer = 0 ; 
+  let name = names.splice(0,1) ;
+  
+  // if(result.includes(name))
+}
   
 }
 
