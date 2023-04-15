@@ -17,6 +17,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function repeater(str, options) {
   if(typeof str !== "string") str = String(str) ;
+  // if(typeof str === "object") str = str.toString() ;
   let repeatTimes = options.repeatTimes||0 ;
   let separator = options.separator||"+" ;
   let addition = String(options.addition)||"" ;
@@ -61,13 +62,13 @@ module.exports = {
   repeater
 };
 
-const objWithSpecificCoercion = {
-  [Symbol.toPrimitive]: hint => hint !== 'number' ? 'STRING_OR_DEFAULT' : 'NUMBER'
-};
+// const objWithSpecificCoercion = {
+//   [Symbol.toPrimitive]: hint => hint !== 'number' ? 'STRING_OR_DEFAULT' : 'NUMBER'
+// };
 
 
-console.log(repeater(objWithSpecificCoercion, { repeatTimes: 2, addition: objWithSpecificCoercion })) ;
-console.log('STRING_OR_DEFAULTSTRING_OR_DEFAULT+STRING_OR_DEFAULTSTRING_OR_DEFAULT'); 
+// console.log(repeater(objWithSpecificCoercion, { repeatTimes: 2, addition: objWithSpecificCoercion })) ;
+// console.log('STRING_OR_DEFAULTSTRING_OR_DEFAULT+STRING_OR_DEFAULTSTRING_OR_DEFAULT'); 
 // console.log(repeater(objWithSpecificCoercion, { repeatTimes: 2})) ;
 //'la+sla+sla+'
 // console.log("test") ;

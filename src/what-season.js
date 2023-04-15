@@ -17,19 +17,31 @@ function getSeason(date) {
     return 'Unable to determine the time of year!' ;
   }
 
- 
+ if( typeof date !== "object"){
+  throw new Error("Invalid date!") ;
+ }
 
-  try{
+  // try{
 
   // if(date.hasOwnProperty('toString') || Array.isArray(date) ) {
   // if(!date.getMonth()) {
     // throw new Error("Invalid date!") ;
   // }
-  date.getMonth() ;
-}catch(error){
-  error.message = "Invalid date!"
-  return error ;
-}
+  
+  if ( !( 'getMonth' in date ) ){
+    console.log("error - " ,date) ;
+    throw new Error("Invalid date!") ;
+  } ;
+  
+  if ( date.hasOwnProperty('toString') ){
+    throw new Error("Invalid date!") ;
+  }
+
+
+// }catch(error){
+//   error.message = "Invalid date!"
+//   return error ;
+// }
 
       // let month = new Date(Date.parse(date)).getMonth()+1 ;
       let month = date.getMonth()+1 ;
@@ -53,21 +65,21 @@ module.exports = {
   getSeason
 };
 
-const fakeDate = {
-  toString() {
-      return Date.prototype.toString.call(new Date());
-  },
-  [Symbol.toStringTag]: 'Date'
-};
-
-
-const invalidDate = { John: 'Smith' } ;
-
-
-console.log("fakedate" ,fakeDate.hasOwnProperty('toString')) ;
-const date = new Date() ;
-console.log("true date" ,date.hasOwnProperty('toString')) ;
-
-
+// const fakeDate = {
+//   toString() {
+//       return Date.prototype.toString.call(new Date());
+//   },
+//   [Symbol.toStringTag]: 'Date'
+// };
 // console.log(getSeason(fakeDate)) ;
-console.log(getSeason(invalidDate)) ;
+
+
+// const invalidDate = { John: 'Smith' } ;
+
+
+// console.log("fakedate" ,fakeDate.hasOwnProperty('toString')) ;
+// const date = new Date() ;
+// console.log("true date" ,date.hasOwnProperty('toString')) ;
+
+
+// console.log(getSeason(invalidDate)) ;
