@@ -20,7 +20,7 @@ function encodeLine(str ) {
         }
     }
     return res.flat().reduce((acc,cur)=>{
-      cur!==1?acc+=cur:""
+      cur !== 1 ? acc += cur : "" ;
       return acc ;
     },"");
 }

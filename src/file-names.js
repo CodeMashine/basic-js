@@ -41,6 +41,3 @@ return result ;
 module.exports = {
   renameFiles
 };
-
-
-console.log(renameFiles(['a', 'b', 'cd', 'b ', 'a(3)'])) ;
