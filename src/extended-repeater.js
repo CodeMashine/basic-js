@@ -16,22 +16,21 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
+  console.log("string" ,str) ;
   if(typeof str !== "string") str = String(str) ;
-  // if(typeof str === "object") str = str.toString() ;
-  let repeatTimes = options.repeatTimes||0 ;
+  let repeatTimes = options.repeatTimes||1 ;
   let separator = options.separator||"+" ;
-  let addition = String(options.addition)||"" ;
-  let additionRepeatTimes = options.additionRepeatTimes||0 ;
+
+  // if (options.addition === false){
+
+    let addition = "" ;
+  if (options.hasOwnProperty("addition")){
+    addition = String(options.addition) ;
+  }
+   
+  let additionRepeatTimes = options.additionRepeatTimes||1 ;
+  
   let additionSeparator = options.additionSeparator||"|" ;
-
-// console.log("additional" ,addition) ;
-// console.log("string" ,str) ;
-
-if ((separator&&additionSeparator) && (!repeatTimes&&!additionRepeatTimes ) ){
-  repeatTimes = 1 ;
-  additionRepeatTimes = 1 ;
-}
-
 
   let item = [] ;
   if(addition){
@@ -54,7 +53,6 @@ if ((separator&&additionSeparator) && (!repeatTimes&&!additionRepeatTimes ) ){
   for(let j = 0 ; j < repeatTimes ; j++){
     res.push(item) ;
   }
-  // return new Array(repeatTimes).fill(item).join(separator)
 return res.join(separator) ;
 }
 
