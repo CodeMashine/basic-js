@@ -19,14 +19,6 @@ const chainMaker = {
    },
   removeLink(position) {
     position = position - 1 ;
-
-      // if ( this.seed.length >= position && position > 0  ){
-      //   this.seed.splice(position,1) ;
-      //   return  this ;
-      // }else{
-      //   this.seed = [] ;
-      //   throw new Error ("You can\'t remove incorrect link!") ; 
-      // }
     
     if( this.seed[position] ) {
       this.seed.splice(position,1) ;
